@@ -1,0 +1,23 @@
+<mat-card>
+    <form>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="title"
+          required
+          minlength="3"
+          placeholder="Story Title"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          rows="6"
+          required
+          placeholder="Write your first sentence here..."
+        ></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Create Story</button>
+    </form>
+  </mat-card>
