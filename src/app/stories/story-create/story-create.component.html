@@ -1,23 +1,32 @@
 <mat-card>
-    <form>
-      <mat-form-field>
-        <input
-          matInput
-          type="text"
-          name="title"
-          required
-          minlength="3"
-          placeholder="Story Title"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <textarea
-          matInput
-          rows="6"
-          required
-          placeholder="Write your first sentence here..."
-        ></textarea>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Create Story</button>
-    </form>
-  </mat-card>
+  <form (submit)="onAddStory(storyForm)" #storyForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        ngModel
+        required
+        minlength="3"
+        placeholder="Story Title"
+        #title="ngModel"
+      />
+      <mat-error *ngIf="title.invalid">Please enter a story title</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        name="content"
+        ngModel
+        rows="5"
+        required
+        placeholder="Write your first sentence here..."
+        #content="ngModel"
+      ></textarea>
+      <mat-error *ngIf="content.invalid">Please enter your first sentence</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">
+      Create Story
+    </button>
+  </form>
+</mat-card>

@@ -1,1 +1,17 @@
-<p>Story List Component placeholder</p>
+<mat-card *ngFor="let story of stories">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{ story.title }}</mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <p>{{ story.content }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button> <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

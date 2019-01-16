@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { StoryCreateComponent } from './stories/story-create/story-create.component';
 import { StoryListComponent } from './stories/story-list/story-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { StoryListComponent } from './stories/story-list/story-list.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     MatInputModule,
     MatCardModule,
