@@ -22,4 +22,8 @@ export class StoryListComponent implements OnInit {
         this.stories = stories;
       });
   }
+
+  onDelete(postId: string) {
+    this.storiesService.deleteStory(postId);
+  }
 }

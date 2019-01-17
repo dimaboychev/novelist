@@ -39,7 +39,7 @@ export class StoriesService {
     return this.storiesUpdated.asObservable();
   }
 
-  addPost(title: string, content: string) {
+  addStory(title: string, content: string) {
     const story: Story = { id: null, title: title, content: content };
     this.http
       .post<{ message: string; storyId: string }>(
@@ -52,6 +52,18 @@ export class StoriesService {
         this.stories.push(story);
         this.storiesUpdated.next([...this.stories]);
         this.router.navigate(['/']);
+      });
+  }
+
+  deleteStory(storyId: string) {
+    this.http
+      .delete('http://localhost:3000/api/stories/' + storyId)
+      .subscribe(() => {
+        const updatedStories = this.stories.filter(
+          story => story.id !== storyId
+        );
+        this.stories = updatedStories;
+        this.storiesUpdated.next([...this.stories]);
       });
   }
 }

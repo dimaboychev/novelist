@@ -19,7 +19,7 @@ export class StoryCreateComponent {
     if (form.invalid) {
       return;
     }
-    this.storiesService.addPost(form.value.title, form.value.content);
+    this.storiesService.addStory(form.value.title, form.value.content);
 
     form.resetForm();
   }
