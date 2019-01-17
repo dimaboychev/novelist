@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoryCreateComponent } from './stories/story-create/story-create.component';
 import { StoryListComponent } from './stories/story-list/story-list.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

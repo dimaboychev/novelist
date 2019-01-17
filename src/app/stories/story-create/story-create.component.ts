@@ -15,7 +15,7 @@ export class StoryCreateComponent {
 
   constructor(public storiesService: StoriesService) {}
 
-  onAddStory(form: NgForm) {
+  onSaveStory(form: NgForm) {
     if (form.invalid) {
       return;
     }
