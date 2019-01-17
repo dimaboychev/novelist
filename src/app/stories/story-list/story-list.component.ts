@@ -10,20 +10,24 @@ import { Subscription } from 'rxjs';
 })
 export class StoryListComponent implements OnInit {
   stories: Story[] = [];
+  isLoading = false;
   private storiesSub: Subscription;
 
   constructor(public storiesService: StoriesService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.storiesService.getStories();
     this.storiesSub = this.storiesService
       .getStoryUpdateListener()
       .subscribe((stories: Story[]) => {
+        this.isLoading = false;
         this.stories = stories;
       });
   }
 
   onDelete(postId: string) {
+    this.isLoading = true;
     this.storiesService.deleteStory(postId);
   }
 }

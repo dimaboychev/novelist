@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./story-create.component.scss']
 })
 export class StoryCreateComponent {
+  isLoading = false;
   enteredTitle = '';
   enteredContent = '';
   story: Story;
@@ -19,6 +20,7 @@ export class StoryCreateComponent {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     this.storiesService.addStory(form.value.title, form.value.content);
 
     form.resetForm();
