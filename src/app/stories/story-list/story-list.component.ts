@@ -31,3 +31,4 @@ export class StoryListComponent implements OnInit {
     this.storiesService.deleteStory(postId);
   }
 }
+
