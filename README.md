@@ -1,8 +1,12 @@
 # Novelist
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+
 Novelist is a fun little project where you can create a story by just typing a topic and selecting an image, the rest of the story will be created by the participating community. Anyone can comment the next line of the story and the top voted line will be added to the story every 20 minutes. Project idea credit goes to SoulEncoded. At this point I'm creating this app just for learning purposes (angular 7, express, mongodb, mongoose -- MEAN stack)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+-SoulEncoded YouTube: https://www.youtube.com/channel/UCiZotp9tZ4uXgXEjHDUYzBQ
+
+-project mentioned here: https://youtu.be/X488B66Nl-g?t=338
 
 ## Development server
 
