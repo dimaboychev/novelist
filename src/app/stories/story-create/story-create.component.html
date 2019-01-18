@@ -1,6 +1,10 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onSaveStory(storyForm)" #storyForm="ngForm" *ngIf="!isLoading">
+  <form
+    (submit)="onSaveStory(storyForm)"
+    #storyForm="ngForm"
+    *ngIf="!isLoading"
+  >
     <mat-form-field>
       <input
         matInput
@@ -14,6 +18,42 @@
       />
       <mat-error *ngIf="title.invalid">Please enter a story title</mat-error>
     </mat-form-field>
+    <mat-form-field class="image-query">
+      <input
+        matInput
+        type="text"
+        ngModel
+        required
+        name="imageQuery"
+        placeholder="Search image category..."
+        #imageQuery="ngModel"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="onImageSearch(imageQuery.value)"
+      type="button"
+    >
+      Search
+    </button>
+    <mat-spinner class="fetching-images-spinner" *ngIf="isLoadingImages"></mat-spinner>
+    <div class="row" *ngIf="!isLoadingImages">
+      <div class="column" *ngFor="let rows of imagesTransformed">
+        <label [class.active]="r.checked" *ngFor="let image of rows">
+          <input
+            type="radio"
+            required
+            #imageRadio="ngModel"
+            [value]="image.id"
+            name="imageRadio"
+            ngModel
+            #r
+          />
+          <img [src]="image.url" />
+        </label>
+      </div>
+    </div>
     <mat-form-field>
       <textarea
         matInput
@@ -24,10 +64,13 @@
         placeholder="Write your first sentence here..."
         #content="ngModel"
       ></textarea>
-      <mat-error *ngIf="content.invalid">Please enter your first sentence</mat-error>
+      <mat-error *ngIf="content.invalid"
+        >Please enter your first sentence</mat-error
+      >
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">
       Create Story
     </button>
   </form>
+  <!-- <app-story-get-image></app-story-get-image> -->
 </mat-card>

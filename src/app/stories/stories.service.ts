@@ -10,6 +10,8 @@ import { Story } from './story.model';
 export class StoriesService {
   private stories: Story[] = [];
   private storiesUpdated = new Subject<Story[]>();
+  images = [];
+  private imagesUpdated = new Subject();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -23,6 +25,7 @@ export class StoriesService {
           return storyData.stories.map(story => {
             return {
               title: story.title,
+              imageUrl: story.imageUrl,
               content: story.content,
               id: story._id
             };
@@ -39,8 +42,21 @@ export class StoriesService {
     return this.storiesUpdated.asObservable();
   }
 
-  addStory(title: string, content: string) {
-    const story: Story = { id: null, title: title, content: content };
+  addStory(
+    title: string,
+    imageId: string,
+    imageUrl: string,
+    imageThumbUrl: string,
+    content: string
+  ) {
+    const story: Story = {
+      id: null,
+      title: title,
+      imageId: imageId,
+      imageUrl: imageUrl,
+      imageThumbUrl: imageThumbUrl,
+      content: content
+    };
     this.http
       .post<{ message: string; storyId: string }>(
         'http://localhost:3000/api/stories',
@@ -65,5 +81,32 @@ export class StoriesService {
         this.stories = updatedStories;
         this.storiesUpdated.next([...this.stories]);
       });
+  }
+
+  getImages(query: string) {
+    this.http
+      .get<{ message: string; results: any }>(
+        `http://localhost:3000/api/stories/external-api?query=${query}`
+      )
+      .pipe(
+        map(imageData => {
+          return imageData.results.map(image => {
+            return {
+              id: image.id,
+              url: image.urls.regular,
+              urlThumb: image.urls.thumb
+            };
+          });
+        })
+      )
+      .subscribe(image => {
+        this.images = image;
+        this.imagesUpdated.next([...this.images]);
+        this.images = [];
+      });
+  }
+
+  getImageUpdateListener() {
+    return this.imagesUpdated.asObservable();
   }
 }

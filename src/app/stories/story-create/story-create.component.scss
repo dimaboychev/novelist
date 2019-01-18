@@ -3,6 +3,52 @@ mat-form-field {
   width: 100%;
 }
 
+.image-query {
+  width: auto;
+}
+
 mat-spinner {
   margin: auto;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+img {
+  width: 100%;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+label.active img {
+  box-shadow: 0px 12px 22px 1px #333;
+}
+
+label img:hover {
+  cursor: pointer;
+}
+
+[name='imageRadio'] {
+  visibility: hidden;
+}
+
+.fetching-images-spinner {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
